@@ -21,50 +21,102 @@ module "cluster" {
   source = "cktf/cluster/hcloud"
 
   name = "mycluster"
-  type = "k3s"
 
-  agent_token  = "<REDACTED>"
-  server_token = "<REDACTED>"
-
-  public_key  = "<REDACTED>"
-  private_key = "<REDACTED>"
-
-  hcloud_zone    = "<ALB_ZONE>"
-  hcloud_token   = "<HCLOUD_TOKEN>"
-  hcloud_network = "<HCLOUD_NETWORK>"
+  firewalls = {
+    "master" = {
+      inbounds = {
+        "80:tcp" = {
+          description = "HTTP Inbound Traffic"
+          source_ips  = ["0.0.0.0/0", "::/0"]
+        }
+        "443:tcp" = {
+          description = "HTTPS Inbound Traffic"
+          source_ips  = ["0.0.0.0/0", "::/0"]
+        }
+      }
+      outbounds = {
+        "icmp" = {
+          description     = "ICMP Outbound Traffic"
+          destination_ips = ["0.0.0.0/0", "::/0"]
+        }
+        "any:tcp" = {
+          description     = "TCP Outbound Traffic"
+          destination_ips = ["0.0.0.0/0", "::/0"]
+        }
+        "any:udp" = {
+          description     = "UDP Outbound Traffic"
+          destination_ips = ["0.0.0.0/0", "::/0"]
+        }
+      }
+    }
+    "worker" = {
+      inbounds = {
+        "80:tcp" = {
+          description = "HTTP Inbound Traffic"
+          source_ips  = ["0.0.0.0/0", "::/0"]
+        }
+        "443:tcp" = {
+          description = "HTTPS Inbound Traffic"
+          source_ips  = ["0.0.0.0/0", "::/0"]
+        }
+      }
+      outbounds = {
+        "icmp" = {
+          description     = "ICMP Outbound Traffic"
+          destination_ips = ["0.0.0.0/0", "::/0"]
+        }
+        "any:tcp" = {
+          description     = "TCP Outbound Traffic"
+          destination_ips = ["0.0.0.0/0", "::/0"]
+        }
+        "any:udp" = {
+          description     = "UDP Outbound Traffic"
+          destination_ips = ["0.0.0.0/0", "::/0"]
+        }
+      }
+    }
+  }
 
   servers = {
-    1 = {
-      type     = "cx11"
-      location = "fsn1"
+    "master-1" = {
+      role    = "master"
+      type    = "cx22"
+      network = 12345
     }
-    2 = {
-      type     = "cx11"
-      location = "fsn1"
+    "master-2" = {
+      role    = "master"
+      type    = "cx22"
+      network = 12345
     }
-    3 = {
-      type     = "cx11"
-      location = "fsn1"
+    "master-3" = {
+      role    = "master"
+      type    = "cx22"
+      network = 12345
     }
-  }
-
-  agents = {
-    1 = {
-      type     = "cx21"
-      location = "fsn1"
+    "worker-1" = {
+      role    = "worker"
+      type    = "cx52"
+      network = 12345
     }
-    2 = {
-      type     = "cx21"
-      location = "fsn1"
+    "worker-2" = {
+      role    = "worker"
+      type    = "cx52"
+      network = 12345
     }
-  }
-
-  pools = {
-    1 = {
-      type     = "cx21"
-      location = "fsn1"
-      min_size = 1
-      max_size = 5
+    "worker-3" = {
+      role    = "worker"
+      type    = "cx52"
+      network = 12345
+    }
+    "worker-4" = {
+      role    = "worker"
+      type    = "cx52"
+      network = 12345
+    }
+    "worker-5" = {
+      role    = "worker"
+      type    = "cx52"
+      network = 12345
     }
   }
 }
