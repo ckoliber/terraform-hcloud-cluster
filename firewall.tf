@@ -28,12 +28,4 @@ resource "hcloud_firewall" "this" {
     destination_ips = ["0.0.0.0/0", "::/0"]
     description     = "UDP Internet Traffic"
   }
-
-  apply_to {
-    label_selector = "rke/server=${var.name}"
-  }
-
-  apply_to {
-    label_selector = "rke/agent=${var.name}"
-  }
 }
