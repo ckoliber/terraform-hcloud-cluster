@@ -5,6 +5,29 @@ variable "name" {
   description = "Cluster Name"
 }
 
+variable "firewalls" {
+  type = map(object({
+    inbounds = map(object({
+      description = string
+      source_ips  = list(string)
+    }))
+    outbounds = map(object({
+      description     = string
+      destination_ips = list(string)
+    }))
+  }))
+  default     = {}
+  sensitive   = false
+  description = "Cluster Firewalls"
+}
+
+variable "labels" {
+  type        = map(string)
+  default     = {}
+  sensitive   = false
+  description = "Cluster Labels"
+}
+
 variable "spread" {
   type        = bool
   default     = false
