@@ -22,9 +22,9 @@ resource "hcloud_server" "this" {
   image        = each.value.image != null ? each.value.image : data.hcloud_image.this.id
   location     = each.value.location
   datacenter   = each.value.datacenter
-  firewall_ids = each.value.firewalls
+  firewall_ids = concat(each.value.firewalls, try([hcloud_firewall.this[each.value.role].id], []))
   ssh_keys     = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
-  labels       = each.value.labels
+  labels       = merge(each.value.labels, var.labels)
 
   placement_group_id = (var.spread && each.value.role == "master") ? hcloud_placement_group.this[0].id : null
 
