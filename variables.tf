@@ -5,78 +5,35 @@ variable "name" {
   description = "Cluster Name"
 }
 
-variable "ssh_keys" {
-  type        = list(string)
-  default     = []
+variable "spread" {
+  type        = bool
+  default     = false
   sensitive   = false
-  description = "Cluster SSH Keys"
+  description = "Cluster Spread"
 }
 
-variable "public_key" {
-  type        = string
-  default     = ""
-  sensitive   = true
-  description = "Cluster Public Key"
-}
-
-variable "private_key" {
-  type        = string
-  default     = ""
-  sensitive   = true
-  description = "Cluster Private Key"
-}
-
-variable "hcloud_zone" {
-  type        = string
-  default     = "eu-central"
-  sensitive   = false
-  description = "HCloud Zone"
-}
-
-variable "hcloud_token" {
-  type        = string
-  default     = ""
-  sensitive   = false
-  description = "HCloud Token"
-}
-
-variable "hcloud_network" {
-  type        = string
-  default     = ""
-  sensitive   = false
-  description = "HCloud Network"
-}
-
-variable "hcloud_gateway" {
-  type        = string
-  default     = ""
-  sensitive   = false
-  description = "HCloud Gateway"
-}
-
-variable "hcloud_bastion" {
+variable "bastion" {
   type        = any
-  default     = ""
+  default     = {}
   sensitive   = false
-  description = "HCloud Bastion"
+  description = "Cluster Bastion"
 }
 
-variable "masters" {
+variable "servers" {
   type = map(object({
-    type       = string
-    location   = string
+    role       = string
+    name       = optional(string)
+    type       = optional(string)
+    image      = optional(number)
+    subnet     = optional(string)
+    network    = optional(number)
+    location   = optional(string)
+    datacenter = optional(string)
+    firewalls  = optional(list(number), [])
+    ssh_keys   = optional(list(string), [])
+    labels     = optional(map(string), {})
   }))
   default     = {}
   sensitive   = false
-  description = "Cluster Masters"
-}
-
-variable "workers" {
-  type = map(object({
-    type       = string
-    location   = string
-  }))
-  default     = {}
-  sensitive   = false
-  description = "Cluster Workers"
+  description = "Cluster Servers"
 }
