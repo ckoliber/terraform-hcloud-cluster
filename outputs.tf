@@ -1,3 +1,9 @@
+output "ssh_key" {
+  value       = hcloud_ssh_key.this.id
+  sensitive   = false
+  description = "Cluster SSH Key"
+}
+
 output "servers" {
   value       = { for key, val in terraform_data.this : key => val.output }
   sensitive   = false
