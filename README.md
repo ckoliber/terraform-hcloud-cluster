@@ -4,7 +4,11 @@
 ![release](https://img.shields.io/github/v/release/cktf/terraform-hcloud-cluster?display_name=tag)
 ![license](https://img.shields.io/github/license/cktf/terraform-hcloud-cluster)
 
-General purpose cluster provisioner on hetzner cloud, you can provision cluster of servers, group of firewalls for configuring any kind of workload managers (Swarm, Kubernetes, Nomad, ...) on top of that.
+General purpose cluster provisioner on hetzner cloud, you can these kinds of resources for configuring any kind of workload managers (Swarm, Kubernetes, Nomad, ...) on top of that:
+
+-   Group of servers
+-   Firewall per groups
+-   LoadBalancer per groups
 
 ## Installation
 
@@ -21,6 +25,45 @@ module "cluster" {
   source = "cktf/cluster/hcloud"
 
   name = "mycluster"
+
+  servers = {
+    master = {
+      1 = {
+        type    = "cx22"
+        network = 12345
+      }
+      2 = {
+        type    = "cx22"
+        network = 12345
+      }
+      3 = {
+        type    = "cx22"
+        network = 12345
+      }
+    }
+    worker = {
+      1 = {
+        type    = "cx52"
+        network = 12345
+      }
+      2 = {
+        type    = "cx52"
+        network = 12345
+      }
+      3 = {
+        type    = "cx52"
+        network = 12345
+      }
+      4 = {
+        type    = "cx52"
+        network = 12345
+      }
+      5 = {
+        type    = "cx52"
+        network = 12345
+      }
+    }
+  }
 
   firewalls = {
     master = {
@@ -49,7 +92,6 @@ module "cluster" {
         }
       }
     }
-
     worker = {
       inbounds = {
         "80:tcp" = {
@@ -78,47 +120,19 @@ module "cluster" {
     }
   }
 
-  servers = {
-    "master-1" = {
-      role    = "master"
-      type    = "cx22"
-      network = 12345
+  load_balancers = {
+    master = {
+      network = 4493196
+      mapping = {
+        6443 = 6443
+      }
     }
-    "master-2" = {
-      role    = "master"
-      type    = "cx22"
-      network = 12345
-    }
-    "master-3" = {
-      role    = "master"
-      type    = "cx22"
-      network = 12345
-    }
-
-    "worker-1" = {
-      role    = "worker"
-      type    = "cx52"
-      network = 12345
-    }
-    "worker-2" = {
-      role    = "worker"
-      type    = "cx52"
-      network = 12345
-    }
-    "worker-3" = {
-      role    = "worker"
-      type    = "cx52"
-      network = 12345
-    }
-    "worker-4" = {
-      role    = "worker"
-      type    = "cx52"
-      network = 12345
-    }
-    "worker-5" = {
-      role    = "worker"
-      type    = "cx52"
-      network = 12345
+    worker = {
+      network = 4493196
+      mapping = {
+        80  = 80
+        443 = 443
+      }
     }
   }
 }
