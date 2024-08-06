@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.1.0...1.1.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* change README ([a615810](https://github.com/cktf/terraform-hcloud-cluster/commit/a615810a05c9d8208f809d485c8d363d2f508c15))
+
 # [1.1.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.0.0...1.1.0) (2024-08-06)
 
 
