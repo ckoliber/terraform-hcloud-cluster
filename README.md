@@ -122,13 +122,13 @@ module "cluster" {
 
   load_balancers = {
     master = {
-      network = 4493196
+      network = 12345
       mapping = {
         6443 = 6443
       }
     }
     worker = {
-      network = 4493196
+      network = 12345
       mapping = {
         80  = 80
         443 = 443
