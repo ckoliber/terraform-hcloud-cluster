@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.1.1...1.2.0) (2024-08-06)
+
+
+### Features
+
+* add load_balancers output ([fb5c8cf](https://github.com/cktf/terraform-hcloud-cluster/commit/fb5c8cfcc8c214327bc9dc6a61ba18b05c383b41))
+
 ## [1.1.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.1.0...1.1.1) (2024-08-06)
 
 
