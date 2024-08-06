@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.0.0...1.1.0) (2024-08-06)
+
+
+### Bug Fixes
+
+* change servers variable to groups ([0b943a0](https://github.com/cktf/terraform-hcloud-cluster/commit/0b943a0010af615920c85bae80df79fd3d5a46bf))
+* ignore cloud-init exit code ([b18d9d5](https://github.com/cktf/terraform-hcloud-cluster/commit/b18d9d51eb3e76e0bec75d18276dc8b01fb65aa7))
+* syntax problem in load_balancers ([d917980](https://github.com/cktf/terraform-hcloud-cluster/commit/d917980f12dd34174cfaee77f4b39b5d9d8f8dea))
+
+
+### Features
+
+* add load_balancers ([4a67894](https://github.com/cktf/terraform-hcloud-cluster/commit/4a6789444ed2cde9c3b838918fb8e7676b030476))
+
 # 1.0.0 (2024-08-05)
 
 
