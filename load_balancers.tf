@@ -30,7 +30,7 @@ resource "hcloud_load_balancer_target" "this" {
   load_balancer_id = each.value.id
   type             = "label_selector"
   label_selector   = "${var.name}/role=${each.key}"
-  use_private_ip   = (var.load_balancers[key].network != null)
+  use_private_ip   = (var.load_balancers[each.key].network != null)
 }
 
 resource "hcloud_load_balancer_service" "this" {
@@ -40,7 +40,7 @@ resource "hcloud_load_balancer_service" "this" {
         for src, dest in val.mapping : {
           key = "${key}_${src}"
           val = {
-            id   = val.id
+            id   = hcloud_load_balancer.this[key].id
             src  = src
             dest = dest
           }
