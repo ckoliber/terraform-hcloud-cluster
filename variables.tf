@@ -5,29 +5,6 @@ variable "name" {
   description = "Cluster Name"
 }
 
-variable "firewalls" {
-  type = map(object({
-    inbounds = map(object({
-      description = string
-      source_ips  = list(string)
-    }))
-    outbounds = map(object({
-      description     = string
-      destination_ips = list(string)
-    }))
-  }))
-  default     = {}
-  sensitive   = false
-  description = "Cluster Firewalls"
-}
-
-variable "labels" {
-  type        = map(string)
-  default     = {}
-  sensitive   = false
-  description = "Cluster Labels"
-}
-
 variable "spread" {
   type        = bool
   default     = false
@@ -59,4 +36,41 @@ variable "servers" {
   default     = {}
   sensitive   = false
   description = "Cluster Servers"
+}
+
+variable "firewalls" {
+  type = map(object({
+    name   = optional(string)
+    labels = optional(map(string), {})
+
+    inbounds = map(object({
+      description = string
+      source_ips  = list(string)
+    }))
+    outbounds = map(object({
+      description     = string
+      destination_ips = list(string)
+    }))
+  }))
+  default     = {}
+  sensitive   = false
+  description = "Cluster Firewalls"
+}
+
+variable "load_balancers" {
+  type = map(object({
+    name      = optional(string)
+    type      = optional(string)
+    zone      = optional(string)
+    subnet    = optional(string)
+    network   = optional(number)
+    location  = optional(string)
+    algorithm = optional(string)
+    labels    = optional(map(string), {})
+
+    mapping = map(number)
+  }))
+  default     = {}
+  sensitive   = false
+  description = "Cluster Load Balancers"
 }
