@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.2.0...1.3.0) (2024-08-06)
+
+
+### Features
+
+* add ssh_key id output ([275f3a7](https://github.com/cktf/terraform-hcloud-cluster/commit/275f3a74fcffd746db5e07625e5c086c16bfc198))
+
 # [1.2.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.1.1...1.2.0) (2024-08-06)
 
 
