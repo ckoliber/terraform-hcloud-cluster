@@ -98,6 +98,6 @@ resource "terraform_data" "this" {
   }
 
   provisioner "remote-exec" {
-    inline = ["cloud-init status --wait"]
+    inline = ["cloud-init status --wait || true"]
   }
 }
