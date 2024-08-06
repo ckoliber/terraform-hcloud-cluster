@@ -11,20 +11,17 @@ resource "hcloud_placement_group" "this" {
 }
 
 resource "hcloud_server" "this" {
-  lifecycle {
-    ignore_changes = [image, ssh_keys]
-  }
-
   for_each = var.servers
 
-  name         = each.value.name != null ? each.value.name : "${var.name}-${each.key}"
-  server_type  = each.value.type != null ? each.value.type : "cpx21"
-  image        = each.value.image != null ? each.value.image : data.hcloud_image.this.id
-  location     = each.value.location
-  datacenter   = each.value.datacenter
-  firewall_ids = concat(each.value.firewalls, try([hcloud_firewall.this[each.value.role].id], []))
-  ssh_keys     = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
-  labels       = merge(each.value.labels, var.labels)
+  name                       = coalesce(each.value.name, "${var.name}-${each.key}")
+  server_type                = coalesce(each.value.type, "cpx21")
+  image                      = coalesce(each.value.image, data.hcloud_image.this.id)
+  location                   = each.value.location
+  datacenter                 = each.value.datacenter
+  firewall_ids               = each.value.firewalls
+  ignore_remote_firewall_ids = true
+  ssh_keys                   = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
+  labels                     = merge(each.value.labels, { "${var.name}/role" = each.value.role })
 
   placement_group_id = (var.spread && each.value.role == "master") ? hcloud_placement_group.this[0].id : null
 
@@ -38,7 +35,7 @@ resource "hcloud_server" "this" {
   }
 
   dynamic "network" {
-    for_each = each.value.network != null ? { 0 : each.value.network } : {}
+    for_each = each.value.network != null ? { 0 = each.value.network } : {}
     content {
       network_id = network.value
       alias_ips  = []
@@ -58,8 +55,8 @@ resource "hcloud_server_network" "this" {
 }
 
 resource "terraform_data" "this" {
-  for_each   = hcloud_server.this
   depends_on = [hcloud_server_network.this]
+  for_each   = hcloud_server.this
 
   input = {
     type                = "ssh"

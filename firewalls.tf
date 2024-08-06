@@ -1,7 +1,8 @@
 resource "hcloud_firewall" "this" {
   for_each = var.firewalls
 
-  name = "${var.name}-${each.key}"
+  name   = coalesce(each.value.name, "${var.name}-${each.key}")
+  labels = each.value.labels
 
   rule {
     port        = "22"
@@ -33,5 +34,9 @@ resource "hcloud_firewall" "this" {
       description     = rule.value.description
       destination_ips = rule.value.destination_ips
     }
+  }
+
+  apply_to {
+    label_selector = "${var.name}/role=${each.key}"
   }
 }
