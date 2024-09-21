@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.4.0...1.5.0) (2024-09-21)
+
+
+### Features
+
+* change templates directory ([6304feb](https://github.com/cktf/terraform-hcloud-cluster/commit/6304feb559328534ba3cf3fdd442138c6f768756))
+
 # [1.4.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.3.0...1.4.0) (2024-09-21)
 
 
