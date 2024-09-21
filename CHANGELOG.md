@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.3.0...1.4.0) (2024-09-21)
+
+
+### Bug Fixes
+
+* change CI/CD ([570792a](https://github.com/cktf/terraform-hcloud-cluster/commit/570792a5b4e407f4b426edc4837bef6c0d73150b))
+
+
+### Features
+
+* flatten servers variable ([d88b7c1](https://github.com/cktf/terraform-hcloud-cluster/commit/d88b7c1f3fe8efcf6fbdda781d1fb15f61d2c524))
+
 # [1.3.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.2.0...1.3.0) (2024-08-06)
 
 
