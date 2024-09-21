@@ -10,25 +10,12 @@ resource "hcloud_placement_group" "this" {
   type = "spread"
 }
 
-locals {
-  servers = {
-    for item in flatten([
-      for role, group in var.servers : [
-        for key, val in group : {
-          key = "${role}-${key}"
-          val = val
-        }
-      ]
-    ]) : item.key => item.val
-  }
-}
-
 resource "hcloud_server" "this" {
   lifecycle {
     ignore_changes = [image, user_data]
   }
 
-  for_each = local.servers
+  for_each = var.servers
 
   name                       = coalesce(each.value.name, "${var.name}-${each.key}")
   server_type                = coalesce(each.value.type, "cpx21")
@@ -38,9 +25,9 @@ resource "hcloud_server" "this" {
   firewall_ids               = each.value.firewalls
   ignore_remote_firewall_ids = true
   ssh_keys                   = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
-  labels                     = merge(each.value.labels, { "${var.name}/role" = split("-", each.key)[0] })
+  labels                     = merge(each.value.labels, { "${var.name}/role" = each.value.role })
 
-  placement_group_id = (var.spread && split("-", each.key)[0] == "master") ? hcloud_placement_group.this[0].id : null
+  placement_group_id = (var.spread && (each.value.role == "master")) ? hcloud_placement_group.this[0].id : null
 
   user_data = templatefile("${path.module}/scripts/setup.sh", {
     gateway = try(var.bastion.gateway, "")
@@ -63,12 +50,12 @@ resource "hcloud_server" "this" {
 resource "hcloud_server_network" "this" {
   for_each = {
     for key, val in hcloud_server.this : key => val
-    if local.servers[key].network != null
+    if var.servers[key].network != null
   }
 
   server_id  = each.value.id
-  subnet_id  = local.servers[each.key].subnet
-  network_id = local.servers[each.key].network
+  subnet_id  = var.servers[each.key].subnet
+  network_id = var.servers[each.key].network
 }
 
 resource "terraform_data" "this" {

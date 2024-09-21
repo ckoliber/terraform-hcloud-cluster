@@ -20,7 +20,8 @@ variable "bastion" {
 }
 
 variable "servers" {
-  type = map(map(object({
+  type = map(object({
+    role       = string
     name       = optional(string)
     type       = optional(string)
     image      = optional(number)
@@ -31,7 +32,7 @@ variable "servers" {
     firewalls  = optional(list(number), [])
     ssh_keys   = optional(list(string), [])
     labels     = optional(map(string), {})
-  })))
+  }))
   default     = {}
   sensitive   = false
   description = "Cluster Servers"
