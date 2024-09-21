@@ -29,7 +29,7 @@ resource "hcloud_server" "this" {
 
   placement_group_id = (var.spread && (each.value.role == "master")) ? hcloud_placement_group.this[0].id : null
 
-  user_data = templatefile("${path.module}/scripts/setup.sh", {
+  user_data = templatefile("${path.module}/templates/setup.sh", {
     gateway = try(var.bastion.gateway, "")
   })
 
