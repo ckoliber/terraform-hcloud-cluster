@@ -65,11 +65,11 @@ resource "hcloud_volume" "this" {
         for name, volume in val.volumes : {
           key = "${key}_${name}"
           val = {
-            name      = "${hcloud_server[key].name}-${name}"
+            name      = "${hcloud_server.this[key].name}-${name}"
             size      = volume.size
             format    = volume.format
             protected = volume.protected
-            server_id = hcloud_server[key].id
+            server_id = hcloud_server.this[key].id
           }
         }
       ]
