@@ -32,6 +32,12 @@ variable "servers" {
     firewalls  = optional(list(number), [])
     ssh_keys   = optional(list(string), [])
     labels     = optional(map(string), {})
+
+    volumes = optional(map(object({
+      size      = number
+      format    = optional(string)
+      protected = optional(bool)
+    })), {})
   }))
   default     = {}
   sensitive   = false
