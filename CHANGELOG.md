@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.5.0...1.6.0) (2024-10-09)
+
+
+### Bug Fixes
+
+* syntax problem ([76cb5ea](https://github.com/cktf/terraform-hcloud-cluster/commit/76cb5ea01c591a872d16c7a27af78e72f9b3e5df))
+
+
+### Features
+
+* add server volumes ([15dc272](https://github.com/cktf/terraform-hcloud-cluster/commit/15dc27237021c8965410f37ddc867fde7e77aff7))
+
 # [1.5.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.4.0...1.5.0) (2024-09-21)
 
 
