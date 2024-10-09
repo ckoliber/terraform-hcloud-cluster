@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.6.0...1.6.1) (2024-10-09)
+
+
+### Bug Fixes
+
+* change CI/CD cache version ([4e9a286](https://github.com/cktf/terraform-hcloud-cluster/commit/4e9a286e2074f5bb6c2552f3347217c5254598bb))
+
 # [1.6.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.5.0...1.6.0) (2024-10-09)
 
 
