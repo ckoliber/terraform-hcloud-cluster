@@ -58,6 +58,32 @@ resource "hcloud_server_network" "this" {
   network_id = var.servers[each.key].network
 }
 
+resource "hcloud_volume" "this" {
+  for_each = {
+    for item in flatten([
+      for key, val in var.servers : [
+        for name, volume in val.volumes : {
+          key = "${key}_${name}"
+          val = {
+            name      = "${hcloud_server[key].name}-${name}"
+            size      = volume.size
+            format    = volume.format
+            protected = volume.protected
+            server_id = hcloud_server[key].id
+          }
+        }
+      ]
+    ]) : item.key => item.val
+  }
+
+  name              = each.value.name
+  size              = each.value.size
+  format            = each.value.format
+  delete_protection = each.value.protected
+  server_id         = each.value.server_id
+  automount         = true
+}
+
 resource "terraform_data" "this" {
   depends_on = [hcloud_server_network.this]
   for_each   = hcloud_server.this
