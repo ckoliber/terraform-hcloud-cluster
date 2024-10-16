@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.6.1...1.7.0) (2024-10-16)
+
+
+### Features
+
+* set inbounds, outbounds variables optional ([2088be4](https://github.com/cktf/terraform-hcloud-cluster/commit/2088be45ff1dae525e8b2c19e43ac193afade58f))
+
 ## [1.6.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.6.0...1.6.1) (2024-10-09)
 
 
