@@ -49,14 +49,14 @@ variable "firewalls" {
     name   = optional(string)
     labels = optional(map(string), {})
 
-    inbounds = map(object({
+    inbounds = optional(map(object({
       description = string
       source_ips  = list(string)
-    }))
-    outbounds = map(object({
+    })), {})
+    outbounds = optional(map(object({
       description     = string
       destination_ips = list(string)
-    }))
+    })), {})
   }))
   default     = {}
   sensitive   = false
