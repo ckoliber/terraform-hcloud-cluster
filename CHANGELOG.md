@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.8.0...1.8.1) (2024-10-18)
+
+
+### Bug Fixes
+
+* change roles type to list ([8c6922d](https://github.com/cktf/terraform-hcloud-cluster/commit/8c6922dfc559e1117c35b1d6f6cd039db9de3033))
+
 # [1.8.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.7.0...1.8.0) (2024-10-18)
 
 
