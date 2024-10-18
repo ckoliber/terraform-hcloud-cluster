@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.7.0...1.8.0) (2024-10-18)
+
+
+### Features
+
+* add roles output ([35e4ed2](https://github.com/cktf/terraform-hcloud-cluster/commit/35e4ed21d7896a160dc471129d60910a883cef3a))
+
 # [1.7.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.6.1...1.7.0) (2024-10-16)
 
 
