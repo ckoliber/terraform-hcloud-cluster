@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.9.0...1.10.0) (2024-10-18)
+
+
+### Features
+
+* parametrize placement_groups by first server role ([696bef8](https://github.com/cktf/terraform-hcloud-cluster/commit/696bef8c74112745e43ba5e64171c276f0670333))
+
 # [1.9.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.8.1...1.9.0) (2024-10-18)
 
 
