@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.8.1...1.9.0) (2024-10-18)
+
+
+### Features
+
+* remove dummy roles output ([ebeeb52](https://github.com/cktf/terraform-hcloud-cluster/commit/ebeeb5237376dd199969910c4e04d37d4b20b9ff))
+
 ## [1.8.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.8.0...1.8.1) (2024-10-18)
 
 
