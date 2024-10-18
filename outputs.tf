@@ -5,9 +5,7 @@ output "ssh_key" {
 }
 
 output "roles" {
-  value = {
-    for item in toset([for _, val in var.servers : val.role]) : item => {}
-  }
+  value       = toset([for _, val in var.servers : val.role])
   sensitive   = false
   description = "Cluster Roles"
 }
