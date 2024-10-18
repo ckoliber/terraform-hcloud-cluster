@@ -27,18 +27,18 @@ module "cluster" {
   name = "mycluster"
 
   servers = {
-    master-1 = {
-      role    = "master"
+    manager-1 = {
+      role    = "manager"
       type    = "cx22"
       network = 12345
     }
-    master-2 = {
-      role    = "master"
+    manager-2 = {
+      role    = "manager"
       type    = "cx22"
       network = 12345
     }
-    master-3 = {
-      role    = "master"
+    manager-3 = {
+      role    = "manager"
       type    = "cx22"
       network = 12345
     }
@@ -71,7 +71,7 @@ module "cluster" {
   }
 
   firewalls = {
-    master = {
+    manager = {
       inbounds = {
         "80:tcp" = {
           description = "HTTP Inbound Traffic"
@@ -126,10 +126,10 @@ module "cluster" {
   }
 
   load_balancers = {
-    master = {
+    manager = {
       network = 12345
       mapping = {
-        6443 = 6443
+        2377 = 2377
       }
     }
     worker = {
