@@ -4,12 +4,6 @@ output "ssh_key" {
   description = "Cluster SSH Key"
 }
 
-output "roles" {
-  value       = toset([for _, val in var.servers : val.role])
-  sensitive   = false
-  description = "Cluster Roles"
-}
-
 output "servers" {
   value = {
     for key, val in terraform_data.this : key => {
