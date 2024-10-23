@@ -1,8 +1,3 @@
-data "hcloud_image" "this" {
-  name        = "ubuntu-24.04"
-  most_recent = true
-}
-
 resource "hcloud_placement_group" "this" {
   count = var.spread ? 1 : 0
 
@@ -19,7 +14,7 @@ resource "hcloud_server" "this" {
 
   name                       = coalesce(each.value.name, "${var.name}-${each.key}")
   server_type                = coalesce(each.value.type, "cpx21")
-  image                      = coalesce(each.value.image, data.hcloud_image.this.id)
+  image                      = each.value.image
   location                   = each.value.location
   datacenter                 = each.value.datacenter
   firewall_ids               = each.value.firewalls
