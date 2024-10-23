@@ -3,7 +3,7 @@ resource "hcloud_load_balancer" "this" {
 
   name               = coalesce(each.value.name, "${var.name}-${each.key}")
   load_balancer_type = coalesce(each.value.type, "lb11")
-  network_zone       = coalesce(each.value.zone, "eu-central")
+  network_zone       = each.value.zone
   location           = each.value.location
   labels             = each.value.labels
 
