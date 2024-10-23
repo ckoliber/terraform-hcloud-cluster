@@ -40,7 +40,7 @@ resource "hcloud_firewall" "this" {
     for_each = { for group in each.value.groups : group => "${var.name}/group=${group}" }
 
     content {
-      label_selector = each.value.selector
+      label_selector = apply_to.value
     }
   }
 }
