@@ -6,7 +6,10 @@ output "ssh_key" {
 
 output "servers" {
   value = {
-    for key, val in terraform_data.this : key => val.output
+    for key, val in terraform_data.this : key => {
+      groups     = var.servers[key].groups
+      connection = val.output
+    }
   }
   sensitive   = false
   description = "Cluster Servers"
