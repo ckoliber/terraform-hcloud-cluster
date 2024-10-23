@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.11.0...1.12.0) (2024-10-23)
+
+
+### Features
+
+* add groups output to servers ([1044254](https://github.com/cktf/terraform-hcloud-cluster/commit/1044254dec25798c5426f042ade30d7d7d9416c3))
+
 # [1.11.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.10.0...1.11.0) (2024-10-23)
 
 
