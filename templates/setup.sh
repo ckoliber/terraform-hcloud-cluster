@@ -2,9 +2,15 @@
 
 [ -z "${gateway}" ] && exit 0
 
+IFACE=""
+while [ -z "$IFACE" ]; do
+IFACE=$(hostname -I | awk '{print $1}')
+sleep 2
+done
+
 cat <<-EOF > /etc/systemd/network/default.network
 [Match]
-Name=$(ip a | grep $(hostname -I | awk '{print $1}') | awk '{print $NF}')
+Name=$(ip a | grep $IFACE | awk '{print $NF}')
 
 [Network]
 DHCP=ipv4
