@@ -28,50 +28,51 @@ module "cluster" {
 
   servers = {
     manager-1 = {
-      role    = "manager"
       type    = "cx22"
+      groups  = ["manager"]
       network = 12345
     }
     manager-2 = {
-      role    = "manager"
       type    = "cx22"
+      groups  = ["manager"]
       network = 12345
     }
     manager-3 = {
-      role    = "manager"
       type    = "cx22"
+      groups  = ["manager"]
       network = 12345
     }
 
     worker-1 = {
-      role    = "worker"
       type    = "cx52"
+      groups  = ["worker"]
       network = 12345
     }
     worker-2 = {
-      role    = "worker"
       type    = "cx52"
+      groups  = ["worker"]
       network = 12345
     }
     worker-3 = {
-      role    = "worker"
       type    = "cx52"
+      groups  = ["worker"]
       network = 12345
     }
     worker-4 = {
-      role    = "worker"
       type    = "cx52"
+      groups  = ["worker"]
       network = 12345
     }
     worker-5 = {
-      role    = "worker"
       type    = "cx52"
+      groups  = ["worker"]
       network = 12345
     }
   }
 
   firewalls = {
     manager = {
+      groups = ["manager"]
       inbounds = {
         "80:tcp" = {
           description = "HTTP Inbound Traffic"
@@ -81,23 +82,14 @@ module "cluster" {
           description = "HTTPS Inbound Traffic"
           source_ips  = ["0.0.0.0/0", "::/0"]
         }
-      }
-      outbounds = {
-        "icmp" = {
-          description     = "ICMP Outbound Traffic"
-          destination_ips = ["0.0.0.0/0", "::/0"]
-        }
-        "any:tcp" = {
-          description     = "TCP Outbound Traffic"
-          destination_ips = ["0.0.0.0/0", "::/0"]
-        }
-        "any:udp" = {
-          description     = "UDP Outbound Traffic"
-          destination_ips = ["0.0.0.0/0", "::/0"]
+        "443:tcp" = {
+          description = "HTTPS Inbound Traffic"
+          source_ips  = ["0.0.0.0/0", "::/0"]
         }
       }
     }
     worker = {
+      groups = ["worker"]
       inbounds = {
         "80:tcp" = {
           description = "HTTP Inbound Traffic"
@@ -106,33 +98,14 @@ module "cluster" {
         "443:tcp" = {
           description = "HTTPS Inbound Traffic"
           source_ips  = ["0.0.0.0/0", "::/0"]
-        }
-      }
-      outbounds = {
-        "icmp" = {
-          description     = "ICMP Outbound Traffic"
-          destination_ips = ["0.0.0.0/0", "::/0"]
-        }
-        "any:tcp" = {
-          description     = "TCP Outbound Traffic"
-          destination_ips = ["0.0.0.0/0", "::/0"]
-        }
-        "any:udp" = {
-          description     = "UDP Outbound Traffic"
-          destination_ips = ["0.0.0.0/0", "::/0"]
         }
       }
     }
   }
 
   load_balancers = {
-    manager = {
-      network = 12345
-      mapping = {
-        2377 = 2377
-      }
-    }
-    worker = {
+    default = {
+      groups  = ["manager", "worker"]
       network = 12345
       mapping = {
         80  = 80
