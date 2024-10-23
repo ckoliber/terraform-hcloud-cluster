@@ -20,9 +20,9 @@ resource "hcloud_server" "this" {
   firewall_ids               = each.value.firewalls
   ignore_remote_firewall_ids = true
   ssh_keys                   = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
-  labels                     = merge(each.value.labels, { "${var.name}/role" = each.value.role })
+  labels                     = merge(each.value.labels, { for group in each.value.groups : "${var.name}/group" => group })
 
-  placement_group_id = (var.spread && (each.value.role == values(var.servers)[0].role)) ? hcloud_placement_group.this[0].id : null
+  placement_group_id = (var.spread && (each.value.groups == values(var.servers)[0].groups)) ? hcloud_placement_group.this[0].id : null
 
   user_data = templatefile("${path.module}/templates/setup.sh", {
     gateway = try(var.bastion.gateway, "")

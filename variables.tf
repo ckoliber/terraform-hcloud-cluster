@@ -21,7 +21,6 @@ variable "bastion" {
 
 variable "servers" {
   type = map(object({
-    role       = string
     name       = optional(string)
     type       = optional(string)
     image      = optional(number)
@@ -32,6 +31,7 @@ variable "servers" {
     firewalls  = optional(list(number), [])
     ssh_keys   = optional(list(string), [])
     labels     = optional(map(string), {})
+    groups     = optional(list(string), ["default"])
 
     volumes = optional(map(object({
       size      = number
@@ -48,6 +48,7 @@ variable "firewalls" {
   type = map(object({
     name   = optional(string)
     labels = optional(map(string), {})
+    groups = optional(list(string), ["default"])
 
     inbounds = optional(map(object({
       description = string
@@ -73,6 +74,7 @@ variable "load_balancers" {
     location  = optional(string)
     algorithm = optional(string)
     labels    = optional(map(string), {})
+    groups    = optional(list(string), ["default"])
 
     mapping = map(number)
   }))
