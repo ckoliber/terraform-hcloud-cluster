@@ -1,3 +1,16 @@
+# [1.11.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.10.0...1.11.0) (2024-10-23)
+
+
+### Bug Fixes
+
+* change optional arguments ([7799f9d](https://github.com/cktf/terraform-hcloud-cluster/commit/7799f9de6b2c9ba98899df3c624be7fda75d5d31))
+* private node wait for interface ([56af758](https://github.com/cktf/terraform-hcloud-cluster/commit/56af7582b591b2e27b7875dacfae9988779902bf))
+
+
+### Features
+
+* add groups selector ([d986986](https://github.com/cktf/terraform-hcloud-cluster/commit/d98698638c57f98722452a088fe9a8f9c4490c3e))
+
 # [1.10.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.9.0...1.10.0) (2024-10-18)
 
 
