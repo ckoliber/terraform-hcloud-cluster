@@ -36,7 +36,11 @@ resource "hcloud_firewall" "this" {
     }
   }
 
-  apply_to {
-    label_selector = "${var.name}/role=${each.key}"
+  dynamic "apply_to" {
+    for_each = { for group in each.value.groups : group => "${var.name}/group=${group}" }
+
+    content {
+      label_selector = each.value.selector
+    }
   }
 }

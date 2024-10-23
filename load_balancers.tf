@@ -25,12 +25,25 @@ resource "hcloud_load_balancer_network" "this" {
 
 resource "hcloud_load_balancer_target" "this" {
   depends_on = [hcloud_load_balancer_network.this]
-  for_each   = hcloud_load_balancer.this
+  for_each = {
+    for item in flatten([
+      for key, val in var.load_balancers : [
+        for group in val.groups : {
+          key = "${key}_${group}"
+          val = {
+            id       = hcloud_load_balancer.this[key].id
+            private  = (var.load_balancers[key].network != null)
+            selector = "${var.name}/group=${group}"
+          }
+        }
+      ]
+    ]) : item.key => item.val
+  }
 
   load_balancer_id = each.value.id
   type             = "label_selector"
-  label_selector   = "${var.name}/role=${each.key}"
-  use_private_ip   = (var.load_balancers[each.key].network != null)
+  use_private_ip   = each.value.private
+  label_selector   = each.value.selector
 }
 
 resource "hcloud_load_balancer_service" "this" {
