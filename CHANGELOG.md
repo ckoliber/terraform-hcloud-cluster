@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.12.0...1.12.1) (2024-10-23)
+
+
+### Bug Fixes
+
+* change firewall selectors ([a39c61c](https://github.com/cktf/terraform-hcloud-cluster/commit/a39c61c12b78a784e25a35bd56cb567fef9bb00d))
+
 # [1.12.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.11.0...1.12.0) (2024-10-23)
 
 
