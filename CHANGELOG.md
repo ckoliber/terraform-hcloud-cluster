@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/cktf/terraform-hcloud-cluster/compare/1.12.1...1.12.2) (2024-10-23)
+
+
+### Bug Fixes
+
+* add load_balancer default zone ([0983790](https://github.com/cktf/terraform-hcloud-cluster/commit/0983790d9a3230a6b651a0744c520d0bd163220f))
+
 ## [1.12.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.12.0...1.12.1) (2024-10-23)
 
 
