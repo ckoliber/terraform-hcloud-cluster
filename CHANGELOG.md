@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.12.2...1.13.0) (2024-10-30)
+
+
+### Features
+
+* add servers protection variable ([4e8a848](https://github.com/cktf/terraform-hcloud-cluster/commit/4e8a848bf20027eda1f99265851a79686d257c39))
+
 ## [1.12.2](https://github.com/cktf/terraform-hcloud-cluster/compare/1.12.1...1.12.2) (2024-10-23)
 
 
