@@ -1,3 +1,7 @@
+locals {
+  ipv4_regex = "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+}
+
 resource "hcloud_placement_group" "this" {
   count = var.spread ? 1 : 0
 
@@ -31,8 +35,8 @@ resource "hcloud_server" "this" {
   })
 
   public_net {
-    ipv4_enabled = (try(var.bastion.gateway, null) == null)
-    ipv6_enabled = (try(var.bastion.gateway, null) == null)
+    ipv4_enabled = can(regex(local.ipv4_regex, var.bastion.gateway))
+    ipv6_enabled = can(regex(local.ipv4_regex, var.bastion.gateway))
   }
 
   dynamic "network" {
@@ -87,7 +91,7 @@ resource "terraform_data" "this" {
 
   input = {
     type                = "ssh"
-    host                = (try(var.bastion.gateway, null) == null) ? each.value.ipv4_address : hcloud_server_network.this[each.key].ip
+    host                = can(regex(local.ipv4_regex, var.bastion.gateway)) ? each.value.ipv4_address : hcloud_server_network.this[each.key].ip
     user                = "root"
     private_key         = tls_private_key.this.private_key_openssh
     bastion_host        = try(var.bastion.host, null)
