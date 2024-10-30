@@ -17,6 +17,8 @@ resource "hcloud_server" "this" {
   image                      = each.value.image
   location                   = each.value.location
   datacenter                 = each.value.datacenter
+  delete_protection          = each.value.protection
+  rebuild_protection         = each.value.protection
   firewall_ids               = each.value.firewalls
   ignore_remote_firewall_ids = true
   ssh_keys                   = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
