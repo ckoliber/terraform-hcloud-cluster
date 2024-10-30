@@ -28,6 +28,7 @@ variable "servers" {
     network    = optional(number)
     location   = optional(string)
     datacenter = optional(string)
+    protection = optional(bool)
     firewalls  = optional(list(number), [])
     ssh_keys   = optional(list(string), [])
     labels     = optional(map(string), {})
