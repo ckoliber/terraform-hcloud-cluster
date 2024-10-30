@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.13.0...1.14.0) (2024-10-30)
+
+
+### Features
+
+* support all OS types in private network setup and support NAT gateway setup ([0885663](https://github.com/cktf/terraform-hcloud-cluster/commit/0885663276f6ed7020486f8fc5495612b0461eb5))
+
 # [1.13.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.12.2...1.13.0) (2024-10-30)
 
 
