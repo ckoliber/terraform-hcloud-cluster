@@ -1,5 +1,5 @@
 output "ssh_key" {
-  value       = hcloud_ssh_key.this.id
+  value       = local.ssh_key
   sensitive   = false
   description = "Cluster SSH Key"
 }

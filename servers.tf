@@ -25,7 +25,7 @@ resource "hcloud_server" "this" {
   rebuild_protection         = each.value.protection
   firewall_ids               = each.value.firewalls
   ignore_remote_firewall_ids = true
-  ssh_keys                   = concat(each.value.ssh_keys, [hcloud_ssh_key.this.id])
+  ssh_keys                   = concat(each.value.ssh_keys, [local.ssh_key])
   labels                     = merge(each.value.labels, { for group in each.value.groups : "${var.name}/group" => group })
 
   placement_group_id = (var.spread && (each.value.groups == values(var.servers)[0].groups)) ? hcloud_placement_group.this[0].id : null

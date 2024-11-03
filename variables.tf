@@ -19,6 +19,13 @@ variable "bastion" {
   description = "Cluster Bastion"
 }
 
+variable "ssh_key" {
+  type        = string
+  default     = null
+  sensitive   = false
+  description = "Cluster SSH Key"
+}
+
 variable "servers" {
   type = map(object({
     name       = optional(string)
