@@ -4,7 +4,7 @@ resource "tls_private_key" "this" {
 }
 
 resource "hcloud_ssh_key" "this" {
-  count = var.ssh_key == null ? 1 : 0
+  count = var.has_ssh_key ? 0 : 1
 
   name       = var.name
   public_key = tls_private_key.this.public_key_openssh
