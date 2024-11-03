@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.21.0...1.21.1) (2024-11-03)
+
+
+### Bug Fixes
+
+* user_data network script permission problem ([53a260b](https://github.com/cktf/terraform-hcloud-cluster/commit/53a260bfbdb721ce4daaa8f5bacd128ca42c3870))
+
 # [1.21.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.20.0...1.21.0) (2024-11-03)
 
 
