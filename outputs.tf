@@ -1,9 +1,3 @@
-output "ssh_key" {
-  value       = local.ssh_key
-  sensitive   = false
-  description = "Cluster SSH Key"
-}
-
 output "servers" {
   value = {
     for key, val in terraform_data.this : key => {

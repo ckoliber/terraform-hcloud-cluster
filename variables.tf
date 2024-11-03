@@ -19,18 +19,18 @@ variable "bastion" {
   description = "Cluster Bastion"
 }
 
-variable "ssh_key" {
+variable "public_key" {
   type        = string
-  default     = null
+  default     = ""
   sensitive   = false
-  description = "Cluster SSH Key"
+  description = "Cluster Public Key"
 }
 
-variable "has_ssh_key" {
-  type        = bool
-  default     = false
+variable "private_key" {
+  type        = string
+  default     = ""
   sensitive   = false
-  description = "Cluster Has SSH Key"
+  description = "Cluster Private Key"
 }
 
 variable "servers" {
