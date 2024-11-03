@@ -24,57 +24,59 @@ terraform init
 module "cluster" {
   source = "cktf/cluster/hcloud"
 
-  name = "mycluster"
+  name        = "mycluster"
+  public_key  = "<REDACTED>"
+  private_key = "<REDACTED>"
 
   servers = {
     manager-1 = {
-      type        = "cx22"
-      groups      = ["manager"]
-      network     = 12345
-      has_network = true
+      type    = "cx22"
+      groups  = ["manager"]
+      attach  = true
+      network = 12345
     }
     manager-2 = {
-      type        = "cx22"
-      groups      = ["manager"]
-      network     = 12345
-      has_network = true
+      type    = "cx22"
+      groups  = ["manager"]
+      attach  = true
+      network = 12345
     }
     manager-3 = {
-      type        = "cx22"
-      groups      = ["manager"]
-      network     = 12345
-      has_network = true
+      type    = "cx22"
+      groups  = ["manager"]
+      attach  = true
+      network = 12345
     }
 
     worker-1 = {
-      type        = "cx52"
-      groups      = ["worker"]
-      network     = 12345
-      has_network = true
+      type    = "cx52"
+      groups  = ["worker"]
+      attach  = true
+      network = 12345
     }
     worker-2 = {
-      type        = "cx52"
-      groups      = ["worker"]
-      network     = 12345
-      has_network = true
+      type    = "cx52"
+      groups  = ["worker"]
+      attach  = true
+      network = 12345
     }
     worker-3 = {
-      type        = "cx52"
-      groups      = ["worker"]
-      network     = 12345
-      has_network = true
+      type    = "cx52"
+      groups  = ["worker"]
+      attach  = true
+      network = 12345
     }
     worker-4 = {
-      type        = "cx52"
-      groups      = ["worker"]
-      network     = 12345
-      has_network = true
+      type    = "cx52"
+      groups  = ["worker"]
+      attach  = true
+      network = 12345
     }
     worker-5 = {
-      type        = "cx52"
-      groups      = ["worker"]
-      network     = 12345
-      has_network = true
+      type    = "cx52"
+      groups  = ["worker"]
+      attach  = true
+      network = 12345
     }
   }
 
@@ -113,9 +115,9 @@ module "cluster" {
 
   load_balancers = {
     default = {
-      groups      = ["manager", "worker"]
-      network     = 12345
-      has_network = true
+      groups  = ["manager", "worker"]
+      attach  = true
+      network = 12345
       mapping = {
         80  = 80
         443 = 443

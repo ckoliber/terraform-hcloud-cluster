@@ -15,7 +15,7 @@ resource "hcloud_load_balancer" "this" {
 resource "hcloud_load_balancer_network" "this" {
   for_each = {
     for key, val in hcloud_load_balancer.this : key => val
-    if var.load_balancers[key].has_network
+    if var.load_balancers[key].attach
   }
 
   load_balancer_id = each.value.id
@@ -32,7 +32,7 @@ resource "hcloud_load_balancer_target" "this" {
           key = "${key}_${group}"
           val = {
             id       = hcloud_load_balancer.this[key].id
-            private  = var.load_balancers[key].has_network
+            private  = var.load_balancers[key].attach
             selector = "${var.name}/group=${group}"
           }
         }
