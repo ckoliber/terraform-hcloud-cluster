@@ -40,7 +40,7 @@ resource "hcloud_server" "this" {
   }
 
   dynamic "network" {
-    for_each = each.value.network != null ? { 0 = each.value.network } : {}
+    for_each = each.value.attach ? { 0 = each.value.network } : {}
     content {
       network_id = network.value
       alias_ips  = []
@@ -51,7 +51,7 @@ resource "hcloud_server" "this" {
 resource "hcloud_server_network" "this" {
   for_each = {
     for key, val in hcloud_server.this : key => val
-    if var.servers[key].network != null
+    if var.servers[key].attach
   }
 
   server_id  = each.value.id
