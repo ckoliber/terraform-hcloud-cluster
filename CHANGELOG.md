@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/cktf/terraform-hcloud-cluster/compare/1.21.1...1.21.2) (2024-11-03)
+
+
+### Bug Fixes
+
+* disable ssh_deletekeys in cloud-init ([3033f77](https://github.com/cktf/terraform-hcloud-cluster/commit/3033f77ff2c347de80be59dda10cf0c8ed094510))
+
 ## [1.21.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.21.0...1.21.1) (2024-11-03)
 
 
