@@ -1,3 +1,15 @@
+# [1.20.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.19.0...1.20.0) (2024-11-03)
+
+
+### Bug Fixes
+
+* change user_data template name ([cbccd46](https://github.com/cktf/terraform-hcloud-cluster/commit/cbccd463a12306aadb307a40e2ad6701443df01c))
+
+
+### Features
+
+* add public_key and private_key external variables ([cf7f9cf](https://github.com/cktf/terraform-hcloud-cluster/commit/cf7f9cfa89464301ba26b2286cf27fff741e0845))
+
 # [1.19.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.18.0...1.19.0) (2024-11-03)
 
 
