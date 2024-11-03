@@ -92,8 +92,10 @@ resource "terraform_data" "this" {
   input = {
     type                = "ssh"
     host                = can(regex(local.ipv4_regex, var.bastion.gateway)) ? hcloud_server_network.this[each.key].ip : each.value.ipv4_address
+    port                = "22"
     user                = "root"
     private_key         = tls_private_key.this.private_key_openssh
+    private_host        = try(hcloud_server_network.this[each.key].ip, null)
     bastion_host        = try(var.bastion.host, null)
     bastion_port        = try(var.bastion.port, null)
     bastion_user        = try(var.bastion.user, null)
@@ -103,6 +105,7 @@ resource "terraform_data" "this" {
   connection {
     type                = self.input.type
     host                = self.input.host
+    port                = self.input.port
     user                = self.input.user
     private_key         = self.input.private_key
     bastion_host        = self.input.bastion_host
