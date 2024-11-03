@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.14.0...1.15.0) (2024-11-03)
+
+
+### Features
+
+* generalize setup.sh to support all linux OSes ([c8e231e](https://github.com/cktf/terraform-hcloud-cluster/commit/c8e231e9340533c51a18e945e0b44dd2267b3324))
+
 # [1.14.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.13.0...1.14.0) (2024-10-30)
 
 
