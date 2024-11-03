@@ -28,53 +28,53 @@ module "cluster" {
 
   servers = {
     manager-1 = {
-      type    = "cx22"
-      groups  = ["manager"]
-      attach  = true
-      network = 12345
+      type        = "cx22"
+      groups      = ["manager"]
+      network     = 12345
+      has_network = true
     }
     manager-2 = {
-      type    = "cx22"
-      groups  = ["manager"]
-      attach  = true
-      network = 12345
+      type        = "cx22"
+      groups      = ["manager"]
+      network     = 12345
+      has_network = true
     }
     manager-3 = {
-      type    = "cx22"
-      groups  = ["manager"]
-      attach  = true
-      network = 12345
+      type        = "cx22"
+      groups      = ["manager"]
+      network     = 12345
+      has_network = true
     }
 
     worker-1 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type        = "cx52"
+      groups      = ["worker"]
+      network     = 12345
+      has_network = true
     }
     worker-2 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type        = "cx52"
+      groups      = ["worker"]
+      network     = 12345
+      has_network = true
     }
     worker-3 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type        = "cx52"
+      groups      = ["worker"]
+      network     = 12345
+      has_network = true
     }
     worker-4 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type        = "cx52"
+      groups      = ["worker"]
+      network     = 12345
+      has_network = true
     }
     worker-5 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type        = "cx52"
+      groups      = ["worker"]
+      network     = 12345
+      has_network = true
     }
   }
 
@@ -113,9 +113,9 @@ module "cluster" {
 
   load_balancers = {
     default = {
-      groups  = ["manager", "worker"]
-      attach  = true
-      network = 12345
+      groups      = ["manager", "worker"]
+      network     = 12345
+      has_network = true
       mapping = {
         80  = 80
         443 = 443
