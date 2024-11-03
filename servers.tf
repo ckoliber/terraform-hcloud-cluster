@@ -30,7 +30,7 @@ resource "hcloud_server" "this" {
 
   placement_group_id = (var.spread && (each.value.groups == values(var.servers)[0].groups)) ? hcloud_placement_group.this[0].id : null
 
-  user_data = templatefile("${path.module}/templates/userdata.yml", {
+  user_data = templatefile("${path.module}/templates/user_data.yml", {
     public_key = var.public_key
     gateway    = try(var.bastion.gateway, "")
   })
