@@ -30,42 +30,50 @@ module "cluster" {
     manager-1 = {
       type    = "cx22"
       groups  = ["manager"]
+      attach  = true
       network = 12345
     }
     manager-2 = {
       type    = "cx22"
       groups  = ["manager"]
+      attach  = true
       network = 12345
     }
     manager-3 = {
       type    = "cx22"
       groups  = ["manager"]
+      attach  = true
       network = 12345
     }
 
     worker-1 = {
       type    = "cx52"
       groups  = ["worker"]
+      attach  = true
       network = 12345
     }
     worker-2 = {
       type    = "cx52"
       groups  = ["worker"]
+      attach  = true
       network = 12345
     }
     worker-3 = {
       type    = "cx52"
       groups  = ["worker"]
+      attach  = true
       network = 12345
     }
     worker-4 = {
       type    = "cx52"
       groups  = ["worker"]
+      attach  = true
       network = 12345
     }
     worker-5 = {
       type    = "cx52"
       groups  = ["worker"]
+      attach  = true
       network = 12345
     }
   }
@@ -106,6 +114,7 @@ module "cluster" {
   load_balancers = {
     default = {
       groups  = ["manager", "worker"]
+      attach  = true
       network = 12345
       mapping = {
         80  = 80
