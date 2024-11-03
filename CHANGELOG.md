@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.15.0...1.16.0) (2024-11-03)
+
+
+### Features
+
+* add servers private_host output ([77d357f](https://github.com/cktf/terraform-hcloud-cluster/commit/77d357f2313aa69a2aec2af4c2313429015bcceb))
+
 # [1.15.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.14.0...1.15.0) (2024-11-03)
 
 
