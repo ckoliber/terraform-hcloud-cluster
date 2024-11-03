@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.16.0...1.17.0) (2024-11-03)
+
+
+### Features
+
+* add static attach toggle for private network ([c9b7cf7](https://github.com/cktf/terraform-hcloud-cluster/commit/c9b7cf7ad10d336bb7cfeede47ec3e8aaa86e597))
+
 # [1.16.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.15.0...1.16.0) (2024-11-03)
 
 
