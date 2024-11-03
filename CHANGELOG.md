@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.20.0...1.21.0) (2024-11-03)
+
+
+### Features
+
+* change variables and providers ([aa161b3](https://github.com/cktf/terraform-hcloud-cluster/commit/aa161b39ecce888204e66ffd849b369e2044ee36))
+
 # [1.20.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.19.0...1.20.0) (2024-11-03)
 
 
