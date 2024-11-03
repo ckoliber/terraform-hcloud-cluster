@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.17.0...1.18.0) (2024-11-03)
+
+
+### Features
+
+* add external ssh_key ([a84a1cf](https://github.com/cktf/terraform-hcloud-cluster/commit/a84a1cf74249820e9f959dae6eddcca150959f0d))
+
 # [1.17.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.16.0...1.17.0) (2024-11-03)
 
 
