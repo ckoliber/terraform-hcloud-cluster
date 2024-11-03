@@ -11,7 +11,7 @@ resource "hcloud_placement_group" "this" {
 
 resource "hcloud_server" "this" {
   lifecycle {
-    ignore_changes = [image, user_data]
+    ignore_changes = [user_data]
   }
 
   for_each = var.servers
@@ -25,13 +25,14 @@ resource "hcloud_server" "this" {
   rebuild_protection         = each.value.protection
   firewall_ids               = each.value.firewalls
   ignore_remote_firewall_ids = true
-  ssh_keys                   = concat(each.value.ssh_keys, [local.ssh_key])
+  ssh_keys                   = each.value.ssh_keys
   labels                     = merge(each.value.labels, { for group in each.value.groups : "${var.name}/group" => group })
 
   placement_group_id = (var.spread && (each.value.groups == values(var.servers)[0].groups)) ? hcloud_placement_group.this[0].id : null
 
-  user_data = templatefile("${path.module}/templates/setup.sh", {
-    gateway = try(var.bastion.gateway, "")
+  user_data = templatefile("${path.module}/templates/userdata.yml", {
+    public_key = var.public_key
+    gateway    = try(var.bastion.gateway, "")
   })
 
   public_net {
@@ -94,7 +95,7 @@ resource "terraform_data" "this" {
     host                = can(regex(local.ipv4_regex, var.bastion.gateway)) ? hcloud_server_network.this[each.key].ip : each.value.ipv4_address
     port                = "22"
     user                = "root"
-    private_key         = tls_private_key.this.private_key_openssh
+    private_key         = var.private_key
     private_host        = try(hcloud_server_network.this[each.key].ip, null)
     bastion_host        = try(var.bastion.host, null)
     bastion_port        = try(var.bastion.port, null)
