@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.18.0...1.19.0) (2024-11-03)
+
+
+### Features
+
+* add static has_ssh_key and has_network variables ([a62c472](https://github.com/cktf/terraform-hcloud-cluster/commit/a62c472d45046e3675a00720d67eb8d320b15752))
+
 # [1.18.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.17.0...1.18.0) (2024-11-03)
 
 
