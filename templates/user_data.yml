@@ -1,5 +1,6 @@
 #cloud-config
 ssh_pwauth: false
+ssh_deletekeys: false
 ssh_authorized_keys:
     - ${public_key}
 chpasswd:
