@@ -26,21 +26,28 @@ variable "ssh_key" {
   description = "Cluster SSH Key"
 }
 
+variable "has_ssh_key" {
+  type        = bool
+  default     = false
+  sensitive   = false
+  description = "Cluster Has SSH Key"
+}
+
 variable "servers" {
   type = map(object({
-    name       = optional(string)
-    type       = optional(string)
-    image      = optional(number)
-    attach     = optional(bool, false)
-    subnet     = optional(string)
-    network    = optional(number)
-    location   = optional(string)
-    datacenter = optional(string)
-    protection = optional(bool)
-    firewalls  = optional(list(number), [])
-    ssh_keys   = optional(list(string), [])
-    labels     = optional(map(string), {})
-    groups     = optional(list(string), ["default"])
+    name        = optional(string)
+    type        = optional(string)
+    image       = optional(number)
+    subnet      = optional(string)
+    network     = optional(number)
+    has_network = optional(bool, false)
+    location    = optional(string)
+    datacenter  = optional(string)
+    protection  = optional(bool)
+    firewalls   = optional(list(number), [])
+    ssh_keys    = optional(list(string), [])
+    labels      = optional(map(string), {})
+    groups      = optional(list(string), ["default"])
 
     volumes = optional(map(object({
       size      = number
@@ -75,16 +82,16 @@ variable "firewalls" {
 
 variable "load_balancers" {
   type = map(object({
-    name      = optional(string)
-    type      = optional(string)
-    zone      = optional(string)
-    attach    = optional(bool, false)
-    subnet    = optional(string)
-    network   = optional(number)
-    location  = optional(string)
-    algorithm = optional(string)
-    labels    = optional(map(string), {})
-    groups    = optional(list(string), ["default"])
+    name        = optional(string)
+    type        = optional(string)
+    zone        = optional(string)
+    subnet      = optional(string)
+    network     = optional(number)
+    has_network = optional(bool, false)
+    location    = optional(string)
+    algorithm   = optional(string)
+    labels      = optional(map(string), {})
+    groups      = optional(list(string), ["default"])
 
     mapping = map(number)
   }))
