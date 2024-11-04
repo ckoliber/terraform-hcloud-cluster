@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.21.2...1.22.0) (2024-11-04)
+
+
+### Features
+
+* add gateway variable to servers ([ad1ede8](https://github.com/cktf/terraform-hcloud-cluster/commit/ad1ede8da8664212da6094a44d6d6d0437de817f))
+
 ## [1.21.2](https://github.com/cktf/terraform-hcloud-cluster/compare/1.21.1...1.21.2) (2024-11-03)
 
 
