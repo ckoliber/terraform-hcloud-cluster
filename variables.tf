@@ -41,6 +41,7 @@ variable "servers" {
     attach     = optional(bool, false)
     subnet     = optional(string)
     network    = optional(number)
+    gateway    = optional(string)
     location   = optional(string)
     datacenter = optional(string)
     protection = optional(bool)
