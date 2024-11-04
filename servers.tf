@@ -32,12 +32,12 @@ resource "hcloud_server" "this" {
 
   user_data = templatefile("${path.module}/templates/user_data.yml", {
     public_key = var.public_key
-    gateway    = try(var.bastion.gateway, "")
+    gateway    = each.value.gateway
   })
 
   public_net {
-    ipv4_enabled = !can(regex(local.ipv4_regex, var.bastion.gateway))
-    ipv6_enabled = !can(regex(local.ipv4_regex, var.bastion.gateway))
+    ipv4_enabled = !can(regex(local.ipv4_regex, each.value.gateway))
+    ipv6_enabled = !can(regex(local.ipv4_regex, each.value.gateway))
   }
 
   dynamic "network" {
@@ -92,7 +92,7 @@ resource "terraform_data" "this" {
 
   input = {
     type                = "ssh"
-    host                = can(regex(local.ipv4_regex, var.bastion.gateway)) ? hcloud_server_network.this[each.key].ip : each.value.ipv4_address
+    host                = can(regex(local.ipv4_regex, var.servers[each.key].gateway)) ? hcloud_server_network.this[each.key].ip : each.value.ipv4_address
     port                = "22"
     user                = "root"
     private_key         = var.private_key
