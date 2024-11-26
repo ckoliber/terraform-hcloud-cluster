@@ -42,12 +42,12 @@ write_files:
           sleep 5 && ip route replace default via ${gateway} &
           EOF
           else
-          exit 1
+          exit 0
           fi
 
 runcmd:
     # Setup networking configurations
-    - /etc/setup_network.sh
+    - source /etc/setup_network.sh
 
     # Restart networking services to apply changes
     - systemctl disable systemd-networkd-wait-online.service || true
