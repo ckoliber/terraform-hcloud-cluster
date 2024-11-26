@@ -2,6 +2,7 @@ output "servers" {
   value = {
     for key, val in terraform_data.this : key => {
       groups     = var.servers[key].groups
+      volumes    = { for name, _ in var.servers[key].volumes : name => hcloud_volume.this["${key}_${name}"].id }
       connection = val.output
     }
   }
