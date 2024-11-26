@@ -1,3 +1,11 @@
+# [1.23.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.22.0...1.23.0) (2024-11-26)
+
+
+### Features
+
+* add optional gateway variable ([609a713](https://github.com/cktf/terraform-hcloud-cluster/commit/609a7135bcd1594f9bf6474514879ee12b2786a7))
+* add volumes output ([5202ea8](https://github.com/cktf/terraform-hcloud-cluster/commit/5202ea84ba196382460cd340dae44e29f69e0a02))
+
 # [1.22.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.21.2...1.22.0) (2024-11-04)
 
 
