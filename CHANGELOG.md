@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/cktf/terraform-hcloud-cluster/compare/1.23.0...1.23.1) (2024-11-30)
+
+
+### Bug Fixes
+
+* change setup_network command ([c59099b](https://github.com/cktf/terraform-hcloud-cluster/commit/c59099bf441ca6c0741812a3126c693446f21d98))
+
 # [1.23.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.22.0...1.23.0) (2024-11-26)
 
 
