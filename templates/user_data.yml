@@ -47,7 +47,7 @@ write_files:
 
 runcmd:
     # Setup networking configurations
-    - source /etc/setup_network.sh
+    - /etc/setup_network.sh
 
     # Restart networking services to apply changes
     - systemctl disable systemd-networkd-wait-online.service || true
