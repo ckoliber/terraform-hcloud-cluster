@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.23.2...1.24.0) (2025-02-22)
+
+
+### Features
+
+* add new CI ([49c8970](https://github.com/cktf/terraform-hcloud-cluster/commit/49c8970c18e6dd176b772f74394066b69ab16daa))
+
 ## [1.23.2](https://github.com/cktf/terraform-hcloud-cluster/compare/1.23.1...1.23.2) (2025-01-22)
 
 
