@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.24.0...2.0.0) (2025-06-06)
+
+
+### Features
+
+* move firewall rules from cluster to network module ([51749eb](https://github.com/cktf/terraform-hcloud-cluster/commit/51749eb643d3e21cef8ac8e72557fb907f2be245))
+
+
+### BREAKING CHANGES
+
+* remove firewall rules
+
 # [1.24.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.23.2...1.24.0) (2025-02-22)
 
 
