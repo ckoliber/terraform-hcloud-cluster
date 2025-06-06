@@ -4,11 +4,7 @@
 ![release](https://img.shields.io/github/v/release/cktf/terraform-hcloud-cluster?display_name=tag)
 ![license](https://img.shields.io/github/license/cktf/terraform-hcloud-cluster)
 
-General purpose cluster provisioner on hetzner cloud, you can these kinds of resources for configuring any kind of workload managers (Swarm, Kubernetes, Nomad, ...) on top of that:
-
--   Group of servers
--   Firewall per groups
--   LoadBalancer per groups
+General-purpose cluster provisioner for Hetzner Cloud, suitable for configuring workload managers like Swarm, Kubernetes, or Nomad, supporting groups of servers and load balancers.
 
 ## Installation
 
@@ -77,39 +73,6 @@ module "cluster" {
       groups  = ["worker"]
       attach  = true
       network = 12345
-    }
-  }
-
-  firewalls = {
-    manager = {
-      groups = ["manager"]
-      inbounds = {
-        "80:tcp" = {
-          description = "HTTP Inbound Traffic"
-          source_ips  = ["0.0.0.0/0", "::/0"]
-        }
-        "443:tcp" = {
-          description = "HTTPS Inbound Traffic"
-          source_ips  = ["0.0.0.0/0", "::/0"]
-        }
-        "443:tcp" = {
-          description = "HTTPS Inbound Traffic"
-          source_ips  = ["0.0.0.0/0", "::/0"]
-        }
-      }
-    }
-    worker = {
-      groups = ["worker"]
-      inbounds = {
-        "80:tcp" = {
-          description = "HTTP Inbound Traffic"
-          source_ips  = ["0.0.0.0/0", "::/0"]
-        }
-        "443:tcp" = {
-          description = "HTTPS Inbound Traffic"
-          source_ips  = ["0.0.0.0/0", "::/0"]
-        }
-      }
     }
   }
 
