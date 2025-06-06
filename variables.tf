@@ -61,26 +61,6 @@ variable "servers" {
   description = "Cluster Servers"
 }
 
-variable "firewalls" {
-  type = map(object({
-    name   = optional(string)
-    labels = optional(map(string), {})
-    groups = optional(list(string), ["default"])
-
-    inbounds = optional(map(object({
-      description = string
-      source_ips  = list(string)
-    })), {})
-    outbounds = optional(map(object({
-      description     = string
-      destination_ips = list(string)
-    })), {})
-  }))
-  default     = {}
-  sensitive   = false
-  description = "Cluster Firewalls"
-}
-
 variable "load_balancers" {
   type = map(object({
     name      = optional(string)
