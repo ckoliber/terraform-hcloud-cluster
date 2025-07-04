@@ -5,13 +5,6 @@ variable "name" {
   description = "Cluster Name"
 }
 
-variable "spread" {
-  type        = bool
-  default     = false
-  sensitive   = false
-  description = "Cluster Spread"
-}
-
 variable "bastion" {
   type        = any
   default     = {}
@@ -33,50 +26,70 @@ variable "private_key" {
   description = "Cluster Private Key"
 }
 
+variable "groups" {
+  type = map(object({
+    name   = optional(string)
+    type   = optional(string)
+    labels = optional(map(string), {})
+  }))
+  default     = {}
+  sensitive   = false
+  description = "Cluster Groups"
+}
+
+variable "volumes" {
+  type = map(object({
+    name      = optional(string)
+    size      = optional(number, 10)
+    labels    = optional(map(string), {})
+    format    = optional(string)
+    location  = optional(string)
+    protected = optional(bool)
+  }))
+  default     = {}
+  sensitive   = false
+  description = "Cluster Volumes"
+}
+
 variable "servers" {
   type = map(object({
     name       = optional(string)
     type       = optional(string)
     image      = optional(number)
-    attach     = optional(bool, false)
-    subnet     = optional(string)
-    network    = optional(number)
-    gateway    = optional(string, "")
+    labels     = optional(map(string), {})
     location   = optional(string)
     datacenter = optional(string)
     protection = optional(bool)
     firewalls  = optional(list(number), [])
     ssh_keys   = optional(list(string), [])
-    labels     = optional(map(string), {})
-    groups     = optional(list(string), ["default"])
+    volumes    = optional(list(string), [])
+    groups     = optional(list(string), [])
 
-    volumes = optional(map(object({
-      size      = number
-      format    = optional(string)
-      protected = optional(bool)
-    })), {})
+    public_ipv4 = optional(bool, true)
+    public_ipv6 = optional(bool, true)
+    private_ip  = optional(list(string))
+    gateway     = optional(string)
   }))
   default     = {}
   sensitive   = false
   description = "Cluster Servers"
 }
 
-variable "load_balancers" {
+variable "balancers" {
   type = map(object({
     name      = optional(string)
     type      = optional(string)
     zone      = optional(string)
-    attach    = optional(bool, false)
-    subnet    = optional(string)
-    network   = optional(number)
+    labels    = optional(map(string), {})
     location  = optional(string)
     algorithm = optional(string)
-    labels    = optional(map(string), {})
-    groups    = optional(list(string), ["default"])
+    protected = optional(bool)
+    mappings  = optional(list(string), [])
+    groups    = optional(list(string), [])
 
-    mapping = map(number)
+    private_ip = optional(list(string))
   }))
   default     = {}
   sensitive   = false
-  description = "Cluster Load Balancers"
+  description = "Cluster Balancers"
 }

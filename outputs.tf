@@ -1,8 +1,18 @@
+output "volumes" {
+  value = {
+    for key, val in hcloud_volume.this : key => {
+      id     = val.id
+      device = val.linux_device
+    }
+  }
+  sensitive   = false
+  description = "Cluster Volumes"
+}
+
 output "servers" {
   value = {
     for key, val in terraform_data.this : key => {
       groups     = var.servers[key].groups
-      volumes    = { for name, _ in var.servers[key].volumes : name => hcloud_volume.this["${key}_${name}"].id }
       connection = val.output
     }
   }
@@ -10,7 +20,7 @@ output "servers" {
   description = "Cluster Servers"
 }
 
-output "load_balancers" {
+output "balancers" {
   value = {
     for key, val in hcloud_load_balancer.this : key => {
       public_ipv4 = val.ipv4
@@ -19,5 +29,5 @@ output "load_balancers" {
     }
   }
   sensitive   = false
-  description = "Cluster Load Balancers"
+  description = "Cluster Balancers"
 }
