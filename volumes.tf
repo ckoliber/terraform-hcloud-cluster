@@ -6,5 +6,5 @@ resource "hcloud_volume" "this" {
   labels            = each.value.labels
   format            = each.value.format
   location          = each.value.location
-  delete_protection = each.value.protected
+  delete_protection = each.value.protection
 }

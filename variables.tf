@@ -39,12 +39,12 @@ variable "groups" {
 
 variable "volumes" {
   type = map(object({
-    name      = optional(string)
-    size      = optional(number, 10)
-    labels    = optional(map(string), {})
-    format    = optional(string)
-    location  = optional(string)
-    protected = optional(bool)
+    name       = optional(string)
+    size       = optional(number, 10)
+    labels     = optional(map(string), {})
+    format     = optional(string)
+    location   = optional(string)
+    protection = optional(bool)
   }))
   default     = {}
   sensitive   = false
@@ -67,7 +67,7 @@ variable "servers" {
 
     public_ipv4 = optional(bool, true)
     public_ipv6 = optional(bool, true)
-    private_ip  = optional(list(string))
+    private_ip  = optional(list(any))
   }))
   default     = {}
   sensitive   = false
@@ -76,17 +76,17 @@ variable "servers" {
 
 variable "balancers" {
   type = map(object({
-    name      = optional(string)
-    type      = optional(string)
-    zone      = optional(string)
-    labels    = optional(map(string), {})
-    location  = optional(string)
-    algorithm = optional(string)
-    protected = optional(bool)
-    mappings  = optional(list(string), [])
-    groups    = optional(list(string), [])
+    name       = optional(string)
+    type       = optional(string)
+    zone       = optional(string)
+    labels     = optional(map(string), {})
+    location   = optional(string)
+    algorithm  = optional(string)
+    protection = optional(bool)
+    mappings   = optional(list(string), [])
+    groups     = optional(list(string), [])
 
-    private_ip = optional(list(string))
+    private_ip = optional(list(any))
   }))
   default     = {}
   sensitive   = false
