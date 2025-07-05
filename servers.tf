@@ -59,7 +59,7 @@ resource "hcloud_volume_attachment" "this" {
           key = "${key}_${volume}"
           value = {
             server_id = hcloud_server.this[key].id
-            volume_id = hcloud_volume.this[volume].id
+            volume_id = try(hcloud_volume.this[volume].id, volume)
           }
         }
       ]

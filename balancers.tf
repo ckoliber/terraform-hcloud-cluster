@@ -6,7 +6,7 @@ resource "hcloud_load_balancer" "this" {
   network_zone       = each.value.zone
   labels             = each.value.labels
   location           = each.value.location
-  delete_protection  = each.value.protected
+  delete_protection  = each.value.protection
 
   algorithm {
     type = coalesce(each.value.algorithm, "round_robin")
