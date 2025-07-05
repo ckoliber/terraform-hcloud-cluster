@@ -4,7 +4,7 @@
 ![release](https://img.shields.io/github/v/release/cktf/terraform-hcloud-cluster?display_name=tag)
 ![license](https://img.shields.io/github/license/cktf/terraform-hcloud-cluster)
 
-General-purpose cluster provisioner for Hetzner Cloud, suitable for configuring workload managers like Swarm, Kubernetes, or Nomad, supporting groups of servers and load balancers.
+General-purpose cluster provisioner for Hetzner Cloud, suitable for configuring workload managers like Swarm, Kubernetes, or Nomad, supporting groups of volumes, servers and load balancers.
 
 ## Installation
 
@@ -24,67 +24,69 @@ module "cluster" {
   public_key  = "<REDACTED>"
   private_key = "<REDACTED>"
 
+  groups = {
+    manager = {}
+    worker  = {}
+  }
+
   servers = {
     manager-1 = {
-      type    = "cx22"
-      groups  = ["manager"]
-      attach  = true
-      network = 12345
+      type     = "cx22"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["manager"]
     }
     manager-2 = {
-      type    = "cx22"
-      groups  = ["manager"]
-      attach  = true
-      network = 12345
+      type     = "cx22"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["manager"]
     }
     manager-3 = {
-      type    = "cx22"
-      groups  = ["manager"]
-      attach  = true
-      network = 12345
+      type     = "cx22"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["manager"]
     }
 
     worker-1 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type     = "cx52"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["worker"]
     }
     worker-2 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type     = "cx52"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["worker"]
     }
     worker-3 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type     = "cx52"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["worker"]
     }
     worker-4 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type     = "cx52"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["worker"]
     }
     worker-5 = {
-      type    = "cx52"
-      groups  = ["worker"]
-      attach  = true
-      network = 12345
+      type     = "cx52"
+      image    = "ubuntu-24.04"
+      location = "fsn1"
+      groups   = ["worker"]
     }
   }
 
-  load_balancers = {
+  balancers = {
     default = {
-      groups  = ["manager", "worker"]
-      attach  = true
-      network = 12345
-      mapping = {
-        80  = 80
-        443 = 443
-      }
+      type     = "lb11"
+      location = "fsn1"
+      mappings = ["tcp:80:80", "tcp:443:443"]
+      groups   = ["manager", "worker"]
     }
   }
 }
