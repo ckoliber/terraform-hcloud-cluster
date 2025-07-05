@@ -19,13 +19,8 @@ resource "hcloud_server" "this" {
   firewall_ids               = each.value.firewalls
   ignore_remote_firewall_ids = true
   ssh_keys                   = each.value.ssh_keys
-
-  placement_group_id = try([for group in each.value.group : hcloud_placement_group.this[group].id if var.groups[group].type != null][0], null)
-
-  user_data = templatefile("${path.module}/templates/user_data.yml", {
-    public_key = var.public_key
-    gateway    = each.value.gateway
-  })
+  user_data                  = templatefile("${path.module}/templates/user_data.yml", { public_key = var.public_key })
+  placement_group_id         = try([for group in each.value.group : hcloud_placement_group.this[group].id if var.groups[group].type != null][0], null)
 
   public_net {
     ipv4_enabled = each.value.public_ipv4
@@ -83,7 +78,7 @@ resource "terraform_data" "this" {
 
   input = {
     type                = "ssh"
-    host                = try(each.value.ipv4_address, hcloud_server_network.this[each.key].ip)
+    host                = coalesce(each.value.ipv4_address, hcloud_server_network.this[each.key].ip)
     port                = "22"
     user                = "root"
     private_key         = var.private_key
