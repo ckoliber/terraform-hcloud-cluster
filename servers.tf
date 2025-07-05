@@ -1,8 +1,9 @@
 resource "hcloud_placement_group" "this" {
   for_each = { for key, val in var.groups : key => val if val.type != null }
 
-  name = coalesce(each.value.name, "${var.name}-${each.key}")
-  type = each.value.type
+  name   = coalesce(each.value.name, "${var.name}-${each.key}")
+  type   = each.value.type
+  labels = each.value.labels
 }
 
 resource "hcloud_server" "this" {
