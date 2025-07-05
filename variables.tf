@@ -1,6 +1,6 @@
 variable "name" {
   type        = string
-  default     = ""
+  default     = null
   sensitive   = false
   description = "Cluster Name"
 }
@@ -14,14 +14,14 @@ variable "bastion" {
 
 variable "public_key" {
   type        = string
-  default     = ""
+  default     = null
   sensitive   = false
   description = "Cluster Public Key"
 }
 
 variable "private_key" {
   type        = string
-  default     = ""
+  default     = null
   sensitive   = false
   description = "Cluster Private Key"
 }
@@ -68,7 +68,6 @@ variable "servers" {
     public_ipv4 = optional(bool, true)
     public_ipv6 = optional(bool, true)
     private_ip  = optional(list(string))
-    gateway     = optional(string)
   }))
   default     = {}
   sensitive   = false

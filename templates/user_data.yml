@@ -13,9 +13,9 @@ write_files:
       content: |
           #!/bin/bash
 
-          # Load interface name
-          until ip route | head -n 1 | awk '{print $5}'; do sleep 1; done
-          IFACE=$(ip route | head -n 1 | awk '{print $5}')
+          # Load default gateway
+          until ip route | head -n 1 | awk '{print $3}'; do sleep 1; done
+          GATEWAY=$(ip route | head -n 1 | awk '{print $3}')
 
           # Detect configuration based on network manager
           if command -v networkd-dispatcher &>/dev/null; then
@@ -26,14 +26,14 @@ write_files:
           CONFIG_FILE="/etc/network/if-up.d/50-masq"
           fi
 
-          # Setup configuration based on gateway type
-          if [[ -n "${gateway}" ]]; then
+          # Setup default route if not exists
+          if ! ip route | grep -q "^default"; then
           cat <<-EOF > $CONFIG_FILE && chmod +x $CONFIG_FILE
           #!/bin/bash
           rm /etc/resolv.conf
           echo 'nameserver 185.12.64.1' >> /etc/resolv.conf
           echo 'nameserver 185.12.64.2' >> /etc/resolv.conf
-          sleep 5 && ip route replace default via ${gateway} &
+          sleep 5 && ip route replace default via $GATEWAY &
           EOF
           else
           exit 0
