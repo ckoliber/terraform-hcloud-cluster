@@ -1,3 +1,22 @@
+# [3.0.0](https://github.com/cktf/terraform-hcloud-cluster/compare/2.0.0...3.0.0) (2025-07-05)
+
+
+### Bug Fixes
+
+* add placement group labels ([7d5bd85](https://github.com/cktf/terraform-hcloud-cluster/commit/7d5bd85d1fb9bbf737a98e6bee0670b9eb28b352))
+
+
+### Features
+
+* add volumes, groups ([2d60d74](https://github.com/cktf/terraform-hcloud-cluster/commit/2d60d7453efa0e6cfea8d7ed12a69672bb374809))
+* remove gateway variable ([f493ce3](https://github.com/cktf/terraform-hcloud-cluster/commit/f493ce3b6a7a56759285131f1830a5938df2aae7))
+* support external volumes ([e60bd96](https://github.com/cktf/terraform-hcloud-cluster/commit/e60bd964e8c9ee0cebdecf5097806de130526711))
+
+
+### BREAKING CHANGES
+
+* change variables
+
 # [2.0.0](https://github.com/cktf/terraform-hcloud-cluster/compare/1.24.0...2.0.0) (2025-06-06)
 
 
