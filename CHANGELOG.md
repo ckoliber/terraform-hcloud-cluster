@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/cktf/terraform-hcloud-cluster/compare/3.0.0...3.1.0) (2025-07-09)
+
+
+### Features
+
+* make public_key, private_key sensitive ([2844770](https://github.com/cktf/terraform-hcloud-cluster/commit/2844770f0a81dde3f0d2968dd552546ed47b4d4a))
+
 # [3.0.0](https://github.com/cktf/terraform-hcloud-cluster/compare/2.0.0...3.0.0) (2025-07-05)
 
 
