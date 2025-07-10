@@ -1,5 +1,5 @@
 resource "hcloud_placement_group" "this" {
-  for_each = { for key, val in var.groups : key => val if val.type != null }
+  for_each = var.groups
 
   name   = coalesce(each.value.name, "${var.name}-${each.key}")
   type   = each.value.type
@@ -21,7 +21,7 @@ resource "hcloud_server" "this" {
   ignore_remote_firewall_ids = true
   ssh_keys                   = each.value.ssh_keys
   user_data                  = templatefile("${path.module}/templates/user_data.yml", { public_key = var.public_key })
-  placement_group_id         = try([for group in each.value.group : hcloud_placement_group.this[group].id if var.groups[group].type != null][0], null)
+  placement_group_id         = try(compact([for group in each.value.group : try(hcloud_placement_group.this[group].id, null)])[0], null)
 
   public_net {
     ipv4_enabled = each.value.public_ipv4
