@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/cktf/terraform-hcloud-cluster/compare/3.1.0...3.2.0) (2025-07-10)
+
+
+### Features
+
+* create placement group without condition ([be5de3d](https://github.com/cktf/terraform-hcloud-cluster/commit/be5de3d9dca70833c414b29aae465e42c6f503c2))
+
 # [3.1.0](https://github.com/cktf/terraform-hcloud-cluster/compare/3.0.0...3.1.0) (2025-07-09)
 
 
