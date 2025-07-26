@@ -1,8 +1,8 @@
 # Terraform HCloud Cluster
 
-![pipeline](https://github.com/cktf/terraform-hcloud-cluster/actions/workflows/ci.yml/badge.svg)
-![release](https://img.shields.io/github/v/release/cktf/terraform-hcloud-cluster?display_name=tag)
-![license](https://img.shields.io/github/license/cktf/terraform-hcloud-cluster)
+![pipeline](https://github.com/ckoliber/terraform-hcloud-cluster/actions/workflows/ci.yml/badge.svg)
+![release](https://img.shields.io/github/v/release/ckoliber/terraform-hcloud-cluster?display_name=tag)
+![license](https://img.shields.io/github/license/ckoliber/terraform-hcloud-cluster)
 
 General-purpose cluster provisioner for Hetzner Cloud, suitable for configuring workload managers like Swarm, Kubernetes, or Nomad, supporting groups of volumes, servers and load balancers.
 
@@ -18,7 +18,7 @@ terraform init
 
 ```hcl
 module "cluster" {
-  source = "cktf/cluster/hcloud"
+  source = "ckoliber/cluster/hcloud"
 
   name        = "mycluster"
   public_key  = "<REDACTED>"
